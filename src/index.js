@@ -4,19 +4,15 @@ import { fetchingWeatherData } from "./api.js";
 const form = document.querySelector("form");
 const input = document.querySelector("input");
 const weatherDisplay = document.querySelector("#weather-display");
+const loader = document.querySelector("#loading-spinner");
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
   const location = input.value;
-  const loader = document.querySelector("#loading-spinner");
 
-  console.log("Loader element:", loader); // If this says 'null', the ID is wrong!
-  console.log("Display element:", weatherDisplay);
+  
+  weatherDisplay.textContent = "";
   loader.classList.remove("hidden");
-
-  Array.from(weatherDisplay.children).forEach((child) => {
-    if (child !== loader) child.remove();
-  });
 
   try {
     const data = await fetchingWeatherData(location);
@@ -27,6 +23,7 @@ form.addEventListener("submit", async (e) => {
   } catch (err) {
     loader.classList.add("hidden");
     console.error("Fetch failed");
+    weatherDisplay.textContent = "City not found. Please try again.";
   }
 });
 
