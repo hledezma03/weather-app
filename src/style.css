@@ -1,5 +1,10 @@
-#content {
-    background-color: red;
-    width: 200px;
-    height: 200px;
+html {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
