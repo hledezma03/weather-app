@@ -8,7 +8,7 @@ form.addEventListener("submit", async (e) => {
   e.preventDefault();
   const location = input.value;
 
-  const data =  await fetchingWeatherData(location);
+  const data = await fetchingWeatherData(location);
 
   refreshUI(data);
 });
@@ -16,11 +16,14 @@ form.addEventListener("submit", async (e) => {
 function refreshUI(data) {
   const weatherDisplay = document.querySelector("#weather-display");
   weatherDisplay.textContent = "";
-
+  const iconImg = document.createElement("img");
   const addressText = document.createElement("h2");
   const conditionText = document.createElement("p");
   const tempText = document.createElement("p");
-
+  console.log(data.icon)
+  iconImg.src = `./assets/icons/${data.icon}.svg`;
+  iconImg.classList.add("weather-icon");
+  iconImg.alt = data.conditions;
   addressText.classList.add("address");
   conditionText.classList.add("condition");
   tempText.classList.add("temp");
@@ -29,5 +32,5 @@ function refreshUI(data) {
   conditionText.textContent = `${data.conditions}`;
   tempText.textContent = `${data.temp}°C`;
 
-  weatherDisplay.append(addressText, conditionText, tempText);
+  weatherDisplay.append(iconImg, addressText, conditionText, tempText);
 }
