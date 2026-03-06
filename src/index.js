@@ -26,7 +26,7 @@ function refreshUI(data) {
   tempText.classList.add("temp");
 
   addressText.textContent = `${data.address}`;
-  conditionText.textContent = `Condition: ${data.conditions}`;
+  conditionText.textContent = `${data.conditions}`;
   tempText.textContent = `${data.temp}°C`;
 
   weatherDisplay.append(addressText, conditionText, tempText);
