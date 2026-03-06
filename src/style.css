@@ -69,6 +69,12 @@ button:hover {
     background: #4c51bf;
 }
 
+.weather-icon {
+    width: 100px;
+    height: 100px;
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.5));
+}
+
 .temp {
     font-size: 3.5rem;
     font-weight: bold;
